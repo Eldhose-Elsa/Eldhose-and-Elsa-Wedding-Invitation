@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation with Countdown and Falling Hearts</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to right, #ff9a9e, #fecfef); /* Background colors */
+            height: 100vh;
+            overflow: hidden; /* Prevents scrollbar during heart animation */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            flex-direction: column; /* Stacks countdown under title */
+        }
+
+        h1, h2 {
+            animation: fadeIn 3s forwards;
+            margin: 10px 0;
+        }
+
+        /* Countdown timer style */
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .photos img {
+            max-width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+            animation: fadeIn 5s forwards;
+        }
+
+        /* Keyframes for fading in the text */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* SVG Heart styles */
+        .heart {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            animation: fall 10s infinite, sideWays 5s infinite ease-in-out;
+            fill: red;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes sideWays {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>You're Invited to Our Wedding</h1>
+        <h2>Eldose weds Elsa - December 29, 2024</h2>
+        <div id="countdown"></div>
+        <div class="photos">
+            <!-- Add your photos here -->
+            <img src="photo1.jpg" alt="Wedding Photo">
+        </div>
+    </div>
+
+    <!-- JavaScript to generate falling hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            heart.setAttribute("class", "heart");
+            heart.setAttribute("viewBox", "0 0 32 29.6");
+            heart.innerHTML = '<path d="M23.6,0c-3.4,0-6.4,2.7-7.6,4.1C14.7,2.7,11.7,0,8.3,0C3.7,0,0,3.7,0,8.3c0,4.5,3.4,7.5,8.5,12.7 c2.6,2.6,5.2,5,7.1,7.5c1.9-2.5,4.5-4.9,7.1-7.5c5.1-5.1,8.5-8.2,8.5-12.7C32,3.7,28.3,0,23.6,0z"/>';
+            
+            // Random position on the screen
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 8 + 's'; // Slower falling speed
+
+            document.body.appendChild(heart);
+
+            // Remove the heart after it falls out of view
+            setTimeout(() => {
+                heart.remove();
+            }, 10000); // Matches the duration of the fall animation
+        }
+
+        // Create hearts every 600 milliseconds
+        setInterval(createHeart, 600);
+
+        // Countdown script
+        var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
+
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = weddingDate - now;
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+            
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "It's our Wedding Day!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
