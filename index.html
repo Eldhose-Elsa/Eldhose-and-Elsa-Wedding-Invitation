@@ -18,8 +18,7 @@
     <meta name="twitter:description" content="Join us for Eldhose & Elsa's wedding on December 29, 2024.">
     <meta name="twitter:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/1.10.0/flipclock.css">
+    
     <style>
         body {
             font-family: 'Playfair Display', serif;
@@ -42,6 +41,7 @@
             margin: 10px 0;
         }
 
+        /* Countdown timer style */
         #countdown {
             font-size: 2em;
             margin-top: 20px;
@@ -54,11 +54,13 @@
             animation: fadeIn 5s forwards;
         }
 
+        /* Keyframes for fading in the text */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
+        /* SVG Heart styles */
         .heart {
             position: fixed;
             width: 30px;
@@ -95,9 +97,6 @@
             <!-- Add your photos here -->
             <img src="photo1.jpg" alt="Wedding Photo">
         </div>
-
-        <!-- The flip clock container -->
-        <div class="flip-clock"></div>
     </div>
 
     <!-- JavaScript to generate falling hearts -->
@@ -122,27 +121,6 @@
 
         // Create hearts every 600 milliseconds
         setInterval(createHeart, 600);
-    </script>
-
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include the necessary JavaScript files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/1.10.0/flipclock.min.js"></script>
-
-    <!-- Custom JavaScript to initiate the flip clock -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // Set the countdown target date (your wedding date)
-            var weddingDate = new Date("December 29, 2024 00:00:00").getTime();
-            var currentDate = new Date().getTime();
-            var countdown = (weddingDate - currentDate) / 1000;  // Convert to seconds
-            
-            // Initialize the flip clock
-            $('.flip-clock').FlipClock(countdown, {
-                clockFace: 'DailyCounter',
-                countdown: true
-            });
-        });
 
         // Countdown script
         var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
