@@ -19,11 +19,12 @@
     <meta name="twitter:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/1.10.0/flipclock.css">
     <style>
         body {
             font-family: 'Playfair Display', serif;
             background: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bakground.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background-size: cover; /* Makes sure the background covers the whole screen */
             height: 100vh;
             overflow: hidden;
             margin: 0;
@@ -33,7 +34,7 @@
             align-items: center;
             text-align: center;
             color: white;
-            flex-direction: column;
+            flex-direction: column; /* Stacks countdown under title */
         }
 
         h1, h2 {
@@ -83,9 +84,6 @@
             50% { transform: translateX(20px); }
         }
     </style>
-    
-    <!-- Link to the CSS file -->
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/flipclock.css">
 </head>
 <body>
 
@@ -94,41 +92,52 @@
         <h2>Eldhose weds Elsa - December 29, 2024</h2>
         <div id="countdown"></div>
         <div class="photos">
+            <!-- Add your photos here -->
             <img src="photo1.jpg" alt="Wedding Photo">
         </div>
+
+        <!-- The flip clock container -->
+        <div class="flip-clock"></div>
     </div>
 
+    <!-- JavaScript to generate falling hearts -->
     <script>
         function createHeart() {
             const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             heart.setAttribute("class", "heart");
             heart.setAttribute("viewBox", "0 0 32 29.6");
             heart.innerHTML = '<path d="M23.6,0c-3.4,0-6.4,2.7-7.6,4.1C14.7,2.7,11.7,0,8.3,0C3.7,0,0,3.7,0,8.3c0,4.5,3.4,7.5,8.5,12.7 c2.6,2.6,5.2,5,7.1,7.5c1.9-2.5,4.5-4.9,7.1-7.5c5.1-5.1,8.5-8.2,8.5-12.7C32,3.7,28.3,0,23.6,0z"/>';
+            
+            // Random position on the screen
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 8 + 's';
+            heart.style.animationDuration = Math.random() * 3 + 8 + 's'; // Slower falling speed
+
             document.body.appendChild(heart);
+
+            // Remove the heart after it falls out of view
             setTimeout(() => {
                 heart.remove();
-            }, 10000);
+            }, 10000); // Matches the duration of the fall animation
         }
 
+        // Create hearts every 600 milliseconds
         setInterval(createHeart, 600);
     </script>
 
-    <div class="flip-clock"></div>
-
-    <!-- Include jQuery from a CDN -->
+    <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/flipclock.js"></script>
+    <!-- Include the necessary JavaScript files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/1.10.0/flipclock.min.js"></script>
 
     <!-- Custom JavaScript to initiate the flip clock -->
     <script type="text/javascript">
         $(document).ready(function() {
+            // Set the countdown target date (your wedding date)
             var weddingDate = new Date("December 29, 2024 00:00:00").getTime();
             var currentDate = new Date().getTime();
-            var countdown = (weddingDate - currentDate) / 1000;
-
-            // Initialize the clock
+            var countdown = (weddingDate - currentDate) / 1000;  // Convert to seconds
+            
+            // Initialize the flip clock
             $('.flip-clock').FlipClock(countdown, {
                 clockFace: 'DailyCounter',
                 countdown: true
@@ -136,17 +145,20 @@
         });
 
         // Countdown script
+        var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
+
         var countdownFunction = setInterval(function() {
             var now = new Date().getTime();
             var distance = weddingDate - now;
-
+            
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
+            
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+            
             if (distance < 0) {
                 clearInterval(countdownFunction);
                 document.getElementById("countdown").innerHTML = "It's our Wedding Day!";
