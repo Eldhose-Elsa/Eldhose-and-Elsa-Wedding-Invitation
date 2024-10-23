@@ -86,6 +86,8 @@
             50% { transform: translateX(20px); }
         }
     </style>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" type="text/css" href="path/to/flipclock.css">
 </head>
 <body>
 
@@ -122,6 +124,30 @@
         // Create hearts every 600 milliseconds
         setInterval(createHeart, 600);
 
+
+         <!-- The flip clock container -->
+    <div class="flip-clock"></div>
+
+    <!-- Include the necessary JavaScript files -->
+    <script src="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/flipclock.min.js"></script>
+    <script src="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/flipclock.js"></script>
+
+    <!-- Custom JavaScript to initiate the flip clock -->
+    <script type="text/javascript">
+        var clock;
+        $(document).ready(function() {
+            // Set the countdown target date (your wedding date)
+            var weddingDate = new Date("December 29, 2024 00:00:00").getTime();
+            var currentDate = new Date().getTime();
+            var countdown = (weddingDate - currentDate) / 1000;  // Convert to seconds
+            
+            // Initialize the clock
+            clock = $('.flip-clock').FlipClock(countdown, {
+                clockFace: 'DailyCounter',
+                countdown: true
+            });
+        });
+        
         // Countdown script
         var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
 
