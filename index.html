@@ -16,13 +16,14 @@
     <meta name="twitter:description" content="Join us for Eldhose & Elsa's wedding on December 29, 2024.">
     <meta name="twitter:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
-    <title>Eldhose & Elsa's Wedding</title>
+
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Playfair Display', serif;
+            background-color: #f0f0f0;
         }
 
         .section {
@@ -35,7 +36,6 @@
             padding: 20px;
         }
 
-        /* First Section: Name and Date */
         .intro {
             background: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bakground.jpg') no-repeat center center/cover;
             position: relative;
@@ -44,7 +44,7 @@
 
         .intro h1 {
             font-size: 4em;
-            font-family: 'Great Vibes', cursive; /* Fancy Font */
+            font-family: 'Great Vibes', cursive;
         }
 
         .intro h2 {
@@ -70,7 +70,6 @@
             }
         }
 
-        /* Countdown Section */
         .countdown {
             background-color: pink;
             padding: 50px 0;
@@ -80,51 +79,36 @@
             font-size: 2em;
             font-weight: bold;
         }
-		.special-message {
-            font-size: 1.5em;
+
+        .flip-clock {
+            display: flex;
+            justify-content: center;
             margin-top: 20px;
-            display: none; /* Hide by default */
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
         }
 
-        .confetti {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 999;
+        .flip-clock div {
+            margin: 0 10px;
+            text-align: center;
         }
 
-        .confetti-piece {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            opacity: 0.8;
-            animation: fall linear infinite;
+        .flip-clock div span {
+            display: block;
+            font-size: 3em;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: pink;
+            color: white;
+            min-width: 100px;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
+        .flip-clock .label {
+            margin-top: 10px;
+            font-size: 1em;
+            text-transform: uppercase;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        .countdown-timer {
-            font-size: 1.5em;
-        }
-
-        /* Bride and Groom Section */
         .bride-groom {
             padding: 50px 20px;
             display: flex;
@@ -171,7 +155,6 @@
             }
         }
 
-        /* Venue Section */
         .venue {
             display: flex;
             justify-content: space-around;
@@ -189,13 +172,36 @@
             font-size: 1.8em;
         }
 
-        /* QR Code */
         .qr-code img {
             width: 150px;
+        }
+
+        /* Slow Falling Hearts */
+        .heart {
+            position: absolute;
+            width: 32px;
+            height: 29.6px;
+            fill: red;
+            pointer-events: none;
+            animation: fall 10s linear infinite; /* Slower fall */
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%; /* Start from the top */
+                opacity: 1;
+            }
+            100% {
+                top: 110%;/* Fall to the very bottom */
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Falling Hearts -->
+    <div class="falling-hearts"></div>
+
     <!-- First Section: Names and Date -->
     <div class="section intro">
         <h1>Eldhose</h1>
@@ -207,7 +213,7 @@
 
     <!-- Bride and Groom Section -->
     <div class="section bride-groom">
-        <h2>Hello.. We are welcoming you to our wedding</h2>
+        <h2>We are welcoming you to our wedding</h2>
         <div class="bride">
             <div>
                 <h3>Elsa</h3>
@@ -238,51 +244,79 @@
         </div>
         <div class="container qr-code">
             <h3>Scan to Find Us</h3>
-            <img src="https://your-github-link.com/qr-code.png" alt="QR Code">
+            <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/qr-code.png?raw=true" alt="QR Code">
         </div>
     </div>
 
     <!-- Countdown Section -->
     <div class="section countdown">
         <h2>DAYS LEFT</h2>
-        <div class="countdown-timer" id="countdown"></div>
+        <div class="flip-clock">
+            <div>
+                <span id="days">00</span>
+                <div class="label">Days</div>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <div class="label">Hours</div>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <div class="label">Minutes</div>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
     </div>
 
-    <!-- JavaScript for Countdown Timer -->
+    <!-- JavaScript for Falling Hearts, Countdown Timer -->
     <script>
-        var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
+        // Create a falling heart SVG
+        function createHeart() {
+            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            heart.setAttribute("class", "heart");
+            heart.setAttribute("viewBox", "0 0 32 29.6");
+            heart.innerHTML = '<path d="M23.6,0c-2.9,0-5.5,1.4-7.6,3.5C13.8,1.4,11.3,0,8.4,0C3.8,0,0,3.8,0,8.4c0,11.4,16,21.2,16,21.2s16-9.9,16-21.2C32,3.8,28.2,0,23.6,0z"/>';
+            document.body.appendChild(heart);
 
-        var countdownFunction = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = weddingDate - now;
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 5 + 8}s`; // Slow falling
+            heart.style.transform = `scale(${Math.random() * 0.8 + 0.5})`; // Random scaling for size variety
 
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            setTimeout(() => {
+                heart.remove();
+            }, 13000); // Let the heart exist longer
+        }
 
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+        setInterval(createHeart, 300);
+
+        // Countdown timer
+        const countDownDate = new Date("Dec 29, 2024 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
 
             if (distance < 0) {
                 clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "It's our Wedding Day!";
-            }
-        }, 1000);
-		function createConfetti() {
-            var confettiContainer = document.createElement('div');
-            confettiContainer.classList.add('confetti');
-            document.body.appendChild(confettiContainer);
-
-            for (var i = 0; i < 100; i++) {
-                var confettiPiece = document.createElement('div');
-                confettiPiece.classList.add('confetti-piece');
-                confettiPiece.style.left = Math.random() * 100 + 'vw';
-                confettiPiece.style.backgroundColor = getRandomColor();
-                confettiPiece.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Random fall duration
-                confettiContainer.appendChild(confettiPiece);
+                document.body.classList.add('confetti-mode');
+                document.querySelector('.countdown').innerHTML = '<h2>We are married!</h2>';
             }
         }
+
+        const countdownFunction = setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
