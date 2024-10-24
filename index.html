@@ -5,144 +5,284 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation - Eldhose & Elsa</title>
 
-    <!-- Open Graph Meta Tags for better link preview -->
     <meta property="og:title" content="You're Invited to Our Wedding!">
     <meta property="og:description" content="Join us for Eldhose & Elsa's wedding on December 29, 2024.">
     <meta property="og:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta property="og:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card Meta Tags for Twitter previews -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="You're Invited to Our Wedding!">
     <meta name="twitter:description" content="Join us for Eldhose & Elsa's wedding on December 29, 2024.">
     <meta name="twitter:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
-    
+    <title>Eldhose & Elsa's Wedding</title>
     <style>
-        body {
-            font-family: 'Playfair Display', serif;
-            background: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bakground.jpg') no-repeat center center fixed;
-            background-size: cover; /* Makes sure the background covers the whole screen */
-            height: 100vh;
-            overflow: hidden;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            flex-direction: column; /* Stacks countdown under title */
+            flex-direction: column;
+            padding: 20px;
         }
 
-        h1, h2 {
-            animation: fadeIn 3s forwards;
-            margin: 10px 0;
+        /* First Section: Name and Date */
+        .intro {
+            background: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bakground.jpg') no-repeat center center/cover;
+            position: relative;
+            animation: zoomIn 2s ease-in-out;
         }
 
-        /* Countdown timer style */
-        #countdown {
+        .intro h1 {
+            font-size: 4em;
+            font-family: 'Great Vibes', cursive; /* Fancy Font */
+        }
+
+        .intro h2 {
+            font-style: italic;
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+
+        .intro h3 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Countdown Section */
+        .countdown {
+            background-color: pink;
+            padding: 50px 0;
+        }
+
+        .countdown h2 {
             font-size: 2em;
+            font-weight: bold;
+        }
+		.special-message {
+            font-size: 1.5em;
             margin-top: 20px;
+            display: none; /* Hide by default */
         }
 
-        .photos img {
-            max-width: 300px;
-            border-radius: 15px;
-            margin-top: 20px;
-            animation: fadeIn 5s forwards;
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 999;
         }
 
-        /* Keyframes for fading in the text */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
-        /* SVG Heart styles */
-        .heart {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            animation: fall 10s infinite, sideWays 5s infinite ease-in-out;
-            fill: red;
-            opacity: 0.8;
+        .countdown-timer {
+            font-size: 1.5em;
         }
 
-        @keyframes fall {
+        /* Bride and Groom Section */
+        .bride-groom {
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bride-groom h2 {
+            font-size: 2.5em;
+            animation: flyIn 2s ease-out;
+        }
+
+        .bride, .groom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        .bride img, .groom img {
+            width: 150px;
+            border-radius: 50%;
+            animation: flyIn 2s ease-out;
+        }
+
+        .bride div, .groom div {
+            text-align: left;
+            width: 60%;
+        }
+
+        .bride div h3, .groom div h3 {
+            font-size: 1.8em;
+        }
+
+        @keyframes flyIn {
             0% {
-                top: -10%;
-                opacity: 1;
-            }
-            100% {
-                top: 110%;
+                transform: translateX(100%);
                 opacity: 0;
             }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
-        @keyframes sideWays {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
+        /* Venue Section */
+        .venue {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 20px;
+        }
+
+        .venue .container {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .venue .container h3 {
+            font-size: 1.8em;
+        }
+
+        /* QR Code */
+        .qr-code img {
+            width: 150px;
         }
     </style>
 </head>
 <body>
+    <!-- First Section: Names and Date -->
+    <div class="section intro">
+        <h1>Eldhose</h1>
+        <h1>&</h1>
+        <h1>Elsa</h1>
+        <h2>We are Getting Married</h2>
+        <h3>29th December, 2024</h3>
+    </div>
 
-    <div>
-        <h1>You're Invited to Our Wedding</h1>
-        <h2>Eldhose weds Elsa - December 29, 2024</h2>
-        <div id="countdown"></div>
-        <div class="photos">
-            <!-- Add your photos here -->
-            <img src="photo1.jpg" alt="Wedding Photo">
+    <!-- Bride and Groom Section -->
+    <div class="section bride-groom">
+        <h2>Hello.. We are welcoming you to our wedding</h2>
+        <div class="bride">
+            <div>
+                <h3>Elsa</h3>
+                <p>Daughter of Sabu and Late Rini Sabu.</p>
+                <p>House name, Place</p>
+            </div>
+            <img src="https://your-github-link.com/bride-photo.jpg" alt="Bride">
+        </div>
+        <div class="groom">
+            <img src="https://your-github-link.com/groom-photo.jpg" alt="Groom">
+            <div>
+                <h3>Eldhose</h3>
+                <p>Son of Joseph and Aleykutty Joseph.</p>
+                <p>House name, Place</p>
+            </div>
         </div>
     </div>
 
-    <!-- JavaScript to generate falling hearts -->
+    <!-- Venue and QR Code Section -->
+    <div class="section venue">
+        <div class="container">
+            <h3>When</h3>
+            <p>December 29, 2024</p>
+        </div>
+        <div class="container">
+            <h3>Where</h3>
+            <p>Fine Arts Society Auditorium, Kuruppampady</p>
+        </div>
+        <div class="container qr-code">
+            <h3>Scan to Find Us</h3>
+            <img src="https://your-github-link.com/qr-code.png" alt="QR Code">
+        </div>
+    </div>
+
+    <!-- Countdown Section -->
+    <div class="section countdown">
+        <h2>DAYS LEFT</h2>
+        <div class="countdown-timer" id="countdown"></div>
+    </div>
+
+    <!-- JavaScript for Countdown Timer -->
     <script>
-        function createHeart() {
-            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            heart.setAttribute("class", "heart");
-            heart.setAttribute("viewBox", "0 0 32 29.6");
-            heart.innerHTML = '<path d="M23.6,0c-3.4,0-6.4,2.7-7.6,4.1C14.7,2.7,11.7,0,8.3,0C3.7,0,0,3.7,0,8.3c0,4.5,3.4,7.5,8.5,12.7 c2.6,2.6,5.2,5,7.1,7.5c1.9-2.5,4.5-4.9,7.1-7.5c5.1-5.1,8.5-8.2,8.5-12.7C32,3.7,28.3,0,23.6,0z"/>';
-            
-            // Random position on the screen
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 8 + 's'; // Slower falling speed
-
-            document.body.appendChild(heart);
-
-            // Remove the heart after it falls out of view
-            setTimeout(() => {
-                heart.remove();
-            }, 10000); // Matches the duration of the fall animation
-        }
-
-        // Create hearts every 600 milliseconds
-        setInterval(createHeart, 600);
-
-        // Countdown script
         var weddingDate = new Date("Dec 29, 2024 00:00:00").getTime();
 
         var countdownFunction = setInterval(function() {
             var now = new Date().getTime();
             var distance = weddingDate - now;
-            
+
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+
             document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
-            
+
             if (distance < 0) {
                 clearInterval(countdownFunction);
                 document.getElementById("countdown").innerHTML = "It's our Wedding Day!";
             }
         }, 1000);
-    </script>
+		function createConfetti() {
+            var confettiContainer = document.createElement('div');
+            confettiContainer.classList.add('confetti');
+            document.body.appendChild(confettiContainer);
 
+            for (var i = 0; i < 100; i++) {
+                var confettiPiece = document.createElement('div');
+                confettiPiece.classList.add('confetti-piece');
+                confettiPiece.style.left = Math.random() * 100 + 'vw';
+                confettiPiece.style.backgroundColor = getRandomColor();
+                confettiPiece.style.animationDuration = (Math.random() * 2 + 3) + 's'; // Random fall duration
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+    </script>
 </body>
 </html>
