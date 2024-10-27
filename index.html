@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation - Eldhose & Elsa</title>
-
-    <meta property="og:title" content="You're Invited to Our Wedding!">
+    <title>Eldhose & Elsa Wedding Invitation</title>
+	<meta property="og:title" content="You're Invited to Our Wedding!">
     <meta property="og:description" content="Join us for Eldhose & Elsa's wedding on December 29, 2024.">
     <meta property="og:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta property="og:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
@@ -18,6 +17,7 @@
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
+        /* Basic Styling */
         body, html {
             margin: 0;
             padding: 0;
@@ -27,161 +27,168 @@
         }
 
         .section {
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             flex-direction: column;
             padding: 20px;
+            position: relative;
+            box-sizing: border-box;
         }
 
+        /* Intro Section */
         .intro {
-            background: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bakground.jpg') no-repeat center center/cover;
-            position: relative;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh; /* Keep this full screen */
             animation: zoomIn 2s ease-in-out;
+            color: white;
+            box-sizing: border-box;
         }
 
         .intro h1 {
             font-size: 4em;
             font-family: 'Great Vibes', cursive;
-		color: white;
+            margin: 0;
         }
 
         .intro h2 {
             font-style: italic;
             font-size: 1.5em;
             margin-top: 10px;
-		color: white;
         }
 
         .intro h3 {
             font-size: 2.5em;
             font-weight: bold;
             margin-top: 10px;
-		color: white;
         }
 
-        @keyframes zoomIn {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            border-radius: 5px;
+        }
+
+        /* Countdown Section */
         .countdown {
             background-color: pink;
-            padding: 50px 0;
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .countdown h2 {
             font-size: 2em;
             font-weight: bold;
+            color: white;
         }
 
         .flip-clock {
             display: flex;
             justify-content: center;
             margin-top: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
+            flex-wrap: wrap;
         }
 
         .flip-clock div {
-            margin: 0 10px;
+            margin: 10px 5px;
             text-align: center;
         }
 
         .flip-clock div span {
             display: block;
-            font-size: 3em;
-            padding: 20px;
+            font-size: 2em;
+            padding: 15px;
             border-radius: 10px;
-            background-color: pink;
-            color: white;
-            min-width: 100px;
+            background-color: white;
+            color: pink;
+            min-width: 70px;
         }
 
         .flip-clock .label {
-            margin-top: 10px;
+            margin-top: 5px;
             font-size: 1em;
             text-transform: uppercase;
         }
 
+        /* Bride and Groom Section */
         .bride-groom {
-            padding: 50px 20px;
-            display: flex;
-            flex-direction: column;
-			background-color: #CEF5EB;
-            align-items: center;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+            height: auto; /* Allow auto height for better spacing */
         }
 
         .bride-groom h2 {
-            font-size: 2.5em;
-            animation: flyIn 2s ease-out;
+            font-size: 2em;
+            color: #333;
+            font-weight: bold;
         }
 
-        .bride, .groom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 80%;
-            margin: 20px 0;
-        }
-
-        .bride img, .groom img {
+        .bride-groom img {
             width: 150px;
+            height: 150px;
             border-radius: 50%;
-            animation: flyIn 2s ease-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 10px;
         }
 
-        .bride div, .groom div {
-            text-align: left;
-            width: 60%;
-        }
-
-        .bride div h3, .groom div h3 {
-            font-size: 1.8em;
-        }
-
-        @keyframes flyIn {
-            0% {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .venue {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 20px;
-			background-color: #96A885;
-        }
-
-        .venue .container {
-            flex: 1;
-            margin: 0 10px;
-            text-align: center;
+        .bride-groom p {
+            color: #555;
             font-size: 1.2em;
+            margin-top: 10px;
         }
 
-        .venue .container h3 {
-            font-size: 1.8em;
+        /* Venue Section */
+        .venue {
+            padding: 20px 20px; /* Adjusted padding for smaller section */
+            background-color: #ffffff;
+        }
+
+        .venue h2 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .venue p {
+            color: #555;
+            font-size: 1.2em;
+            margin: 10px 0; /* Reduced margin for spacing */
         }
 
         .qr-code img {
-            width: 200px;
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Slow Falling Hearts */
+        /* Media Query for Small Screens */
+        @media (max-width: 600px) {
+            .intro h1 { font-size: 2.5em; }
+            .intro h2, .intro h3 { font-size: 1.2em; }
+            .countdown h2 { font-size: 1.5em; }
+            .flip-clock div span { font-size: 1.5em; padding: 10px; min-width: 50px; }
+        }
+		
+		 /* Slow Falling Hearts */
         .heart {
             position: absolute;
             width: 32px;
@@ -201,87 +208,64 @@
                 opacity: 0;
             }
         }
-}
     </style>
 </head>
 <body>
-    <!-- Falling Hearts -->
+	<!-- Falling Hearts -->
     <div class="falling-hearts"></div>
-
-    <!-- First Section: Names and Date -->
+    <!-- Intro Section with Carousel -->
     <div class="section intro">
         <h1>Eldhose</h1>
         <h2>&</h2>
         <h1>Elsa</h1>
         <h2>We are Getting Married</h2>
         <h3>29th December, 2024</h3>
+		
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button onclick="prevImage()">&#60;</button>
+            <button onclick="nextImage()">&#62;</button>
+        </div>
     </div>
-
-    <!-- Bride and Groom Section -->
+	
+	<!-- Bride and Groom Section -->
     <div class="section bride-groom">
-        <h2>We are welcoming you to our wedding</h2>
-        <div class="bride">
-            <div>
-                <h3>Elsa</h3>
-                <p>Daughter of Sabu and Late Rini Sabu.</p>
-                <p>Thekkumkattil</p>
-				<p>Mudavoor</p>
-            </div>
-            <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bride.jpeg" alt="Bride">
-        </div>
-        <div class="groom">
-            <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Groom.jpeg" alt="Groom">
-            <div>
-                <h3>Eldhose</h3>
-                <p>Son of Joseph and Aleykutty Joseph.</p>
-                <p>Kalarickal</p>
-				<p>Nellimolam</p>
-            </div>
-        </div>
+        <h2>Meet the Bride & Groom</h2>
+        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bride.jpeg" alt="Bride Image">
+        <p>Elsa</p>
+	<p>Daughter of Sabu and Late Rini Sabu.</p>
+        <p>Thekkumkattil, Mudavoor</p>
+        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Groom.jpeg" alt="Groom Image">
+        <p>Eldhose</p>
+	<p>Son of Joseph and Aleykutty Joseph.</p>
+        <p>Kalarickal, Nellimolam</p>
     </div>
 
-    <!-- Venue and QR Code Section -->
+    <!-- Venue Section -->
     <div class="section venue">
-        <div class="container">
-            <h3>When</h3>
-            <p>December 29, 2024</p>
-        </div>
-        <div class="container">
-            <h3>Where</h3>
-            <p>Fine Arts Society Auditorium, Kuruppampady</p>
-        </div>
-        <div class="container qr-code">
-            <h3>Scan to Find Us</h3>
-            <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/qr-code.png" alt="QR Code">
-        </div>
+        <h2>Wedding Venue</h2>
+        <p>Location: FAS Hall, Kuruppampady</p>
+        <p>Date: 29th December, 2024</p>
+        <p>Time: 1:00 PM</p>
+        <div class="qr-code">
+	    <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/qr-code.png" alt="QR Code">
+	</div>
     </div>
 
     <!-- Countdown Section -->
     <div class="section countdown">
         <h2>DAYS LEFT</h2>
         <div class="flip-clock">
-            <div>
-                <span id="days">00</span>
-                <div class="label">Days</div>
-            </div>
-            <div>
-                <span id="hours">00</span>
-                <div class="label">Hours</div>
-            </div>
-            <div>
-                <span id="minutes">00</span>
-                <div class="label">Minutes</div>
-            </div>
-            <div>
-                <span id="seconds">00</span>
-                <div class="label">Seconds</div>
-            </div>
+            <div><span id="days">0</span><div class="label">Days</div></div>
+            <div><span id="hours">0</span><div class="label">Hours</div></div>
+            <div><span id="minutes">0</span><div class="label">Minutes</div></div>
+            <div><span id="seconds">0</span><div class="label">Seconds</div></div>
         </div>
     </div>
 
-    <!-- JavaScript for Falling Hearts, Countdown Timer -->
     <script>
-        // Create a falling heart SVG
+	
+		// Create a falling heart SVG
         function createHeart() {
             const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             heart.setAttribute("class", "heart");
@@ -300,31 +284,46 @@
 
         setInterval(createHeart, 300);
 
-        // Countdown timer
-        const countDownDate = new Date("Dec 29, 2024 00:00:00").getTime();
-
+        // Countdown Timer
+        const weddingDate = new Date("December 29, 2024 00:00:00").getTime();
+        
         function updateCountdown() {
             const now = new Date().getTime();
-            const distance = countDownDate - now;
+            const distance = weddingDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
-
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                document.body.classList.add('confetti-mode');
-                document.querySelector('.countdown').innerHTML = '<h2>We are married!</h2>';
-            }
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }
 
-        const countdownFunction = setInterval(updateCountdown, 1000);
+        setInterval(updateCountdown, 1000);
+
+        // Carousel Logic
+        const images = [
+            "https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/slider-1.jpg",
+            "https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/slider-2.jpg",
+            "https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/slider-3.jpg"
+        ];
+
+        let currentImageIndex = 0;
+
+        function updateCarousel() {
+            document.querySelector('.intro').style.backgroundImage = `url(${images[currentImageIndex]})`;
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        }
+
+        // Initialize Carousel
+        updateCarousel();
     </script>
 </body>
 </html>
