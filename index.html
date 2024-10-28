@@ -208,6 +208,41 @@
                 opacity: 0;
             }
         }
+
+	    /* Invitation Section */
+.invitation {
+    padding: 50px 20px;
+    background-color: #ffe6e6;
+    border-radius: 10px;
+}
+
+.invitation h2 {
+    font-size: 2em;
+    font-family: 'Great Vibes', cursive;
+    color: #b30000;
+}
+
+.invitation p {
+    font-size: 1.2em;
+    color: #660000;
+}
+
+/* Gallery Section */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
     </style>
 </head>
 <body>
@@ -226,6 +261,14 @@
             <button onclick="prevImage()">&#60;</button>
             <button onclick="nextImage()">&#62;</button>
         </div>
+    </div>
+
+		<!-- Invitation Section -->
+    <div class="section invitation">
+        <h2>Dear Family & Friends,</h2>
+        <p>With joyful hearts and cherished dreams, we, Eldhose and Elsa, invite you to join us in celebrating a day that marks the beginning of our forever. Your presence would mean the world to us as we exchange vows and promises of love, laughter, and a lifetime together.</p>
+        <p>Please save the date and be a part of our journey on this unforgettable day.</p>
+        <p>With love, <br>Eldhose & Elsa</p>
     </div>
 	
 	<!-- Bride and Groom Section -->
@@ -251,7 +294,19 @@
 	    <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/qr-code.png" alt="QR Code">
 	</div>
     </div>
+   <!-- Gallery Section -->
+   <div class="section gallery">
+       <h2>Our Journey Together</h2>
+        <div class="gallery-container">
+          <img src="path-to-image1.jpg" alt="Memory 1">
+          <img src="path-to-image2.jpg" alt="Memory 2">
+          <img src="path-to-image3.jpg" alt="Memory 3">
+         <!-- Add more images as needed -->
+       </div>
+</div>
 
+
+	
     <!-- Countdown Section -->
     <div class="section countdown">
         <h2>DAYS LEFT</h2>
