@@ -351,6 +351,11 @@
         </div>
     </div>
 
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div id="celebrationContainer"></div>
+	
+
     <script>
 	
 		// Create a falling heart SVG
@@ -421,6 +426,21 @@
     mainImage.src = thumbnail.src;
 }
 
+	$(document).ready(function() {
+    // Function to show the celebration content
+    function showCelebration() {
+        $("#celebrationContainer").fadeOut(1000, function() {
+            // Load the celebration HTML file
+            $("#celebrationContainer").load("https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/refs/heads/main/CELEBRATION.html", function() {
+                $(this).fadeIn(1000);
+            });
+        });
+    }
+
+    // Call the function to show celebration
+    showCelebration();
+});
+	    
     </script>
 </body>
 </html>
