@@ -16,6 +16,8 @@
     <meta name="twitter:image" content="https://github.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/blob/main/invitation-preview-image.jpeg?raw=true">
     <meta name="twitter:url" content="https://eldhose-elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/">
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <style>
         /* Basic Styling */
         body, html {
@@ -227,20 +229,39 @@
     color: #660000;
 }
 
-/* Gallery Section */
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+/* Gallery Carousel Styling */
+.gallery {
+    padding: 50px 20px;
+    text-align: center;
 }
 
-.gallery-container img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.carousel-main img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.carousel-thumbnails img {
+    width: 80px;
+    height: 80px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carousel-thumbnails img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
     </style>
@@ -294,25 +315,31 @@
 	    <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/qr-code.png" alt="QR Code">
 	</div>
     </div>
-   <!-- Gallery Section -->
-   <div class="section gallery">
-       <h2>Our Journey Together</h2>
-        <div class="gallery-container">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-1.jpg" alt="Memory 1">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-2.jpg" alt="Memory 2">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-3.jpg" alt="Memory 3">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-4.jpg" alt="Memory 4">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-5.jpg" alt="Memory 5">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-6.jpg" alt="Memory 6">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-7.jpg" alt="Memory 7">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-8.jpg" alt="Memory 8">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-9.jpg" alt="Memory 9">
-        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-10.jpg" alt="Memory 10">
-       </div>
+<div class="section gallery">
+    <h2>Our Journey Together</h2>
+    
+    <!-- Main Display Image -->
+    <div class="carousel-main">
+        <img id="current-image" src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-1.jpg" alt="Current Image">
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="carousel-thumbnails">
+        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-1.jpg" alt="Memory 1" onclick="changeImage(this)">
+        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-2.jpg" alt="Memory 2" onclick="changeImage(this)">
+        <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-3.jpg" alt="Memory 3" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-4.jpg" alt="Memory 4" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-5.jpg" alt="Memory 5" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-6.jpg" alt="Memory 6" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-7.jpg" alt="Memory 7" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-8.jpg" alt="Memory 8" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-9.jpg" alt="Memory 9" onclick="changeImage(this)">
+		<img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/gallery-10.jpg" alt="Memory 10" onclick="changeImage(this)">
+        <!-- Add more images as needed -->
+    </div>
 </div>
 
 
-	
     <!-- Countdown Section -->
     <div class="section countdown">
         <h2>DAYS LEFT</h2>
@@ -385,6 +412,15 @@
 
         // Initialize Carousel
         updateCarousel();
+		
+		function changeImage(thumbnail) {
+    // Get the main image element
+    const mainImage = document.getElementById('current-image');
+    
+    // Update the source of the main image to match the clicked thumbnail
+    mainImage.src = thumbnail.src;
+}
+
     </script>
 </body>
 </html>
