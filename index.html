@@ -429,11 +429,15 @@
 	$(document).ready(function() {
     // Function to show the celebration content
     function showCelebration() {
-        $("#celebrationContainer").fadeOut(1000, function() {
-            // Load the celebration HTML file
-            $("#celebrationContainer").load("https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/refs/heads/main/CELEBRATION.html", function() {
-                $(this).fadeIn(1000);
-            });
+        $("#celebrationContainer").load("https://Eldhose-Elsa.github.io/Eldhose-and-Elsa-Wedding-Invitation/CELEBRATION.html", function(response, status, xhr) {
+    if (status == "error") {
+        var msg = "Sorry but there was an error: ";
+        $("#celebrationContainer").html(msg + xhr.status + " " + xhr.statusText);
+    } else {
+        $(this).fadeIn(1000);
+    }
+});
+
         });
     }
 
