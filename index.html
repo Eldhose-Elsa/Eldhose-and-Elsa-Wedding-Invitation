@@ -54,6 +54,21 @@
             max-width: 100%;
             height: auto;
         }
+	/*** Spinner Start ***/
+    #spinner {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .8s ease-out, visibility 0s linear .8s;
+        z-index: 99999;
+    }
+
+    #spinner.show {
+        transition: opacity .8s ease-out, visibility 0s linear .0s;
+        visibility: visible;
+        opacity: 1;
+    }
+    /*** Spinner End ***/
+	    
     </style>
 </head>
 
@@ -555,6 +570,14 @@
 
 	
 	<script>
+
+		// Show spinner initially
+        document.getElementById('spinner').classList.add('show');
+        
+        // Hide spinner after 3 seconds
+        setTimeout(() => {
+            document.getElementById('spinner').classList.remove('show');
+        }, 3000);
 // Set the date we're counting down to
 const weddingDate = new Date("December 29, 2024 00:00:00").getTime();
 
