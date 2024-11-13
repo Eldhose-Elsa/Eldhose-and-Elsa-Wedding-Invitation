@@ -659,7 +659,16 @@ body {
     <p class="mb-0">Created with ❤️ for Elsa</p>
 </footer>
 
-	<!--Map Section End -->
+	<!--Footer Section End -->
+	
+	<!-- Audio Element (Hidden) -->
+<audio id="weddingSong" src="https://drive.google.com/file/d/1vw53ZHBK1KsAHgWmPwxIoxa1jxlkOLxt/view?usp=sharing" preload="auto"></audio>
+
+<!-- Stop Button -->
+<button id="stopButton" style="position: fixed; top: 10px; right: 10px; background-color: #153f7e; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
+    Stop Music
+</button>
+
 
     <script>
 		
@@ -784,8 +793,21 @@ function createPetal() {
 // Generate petals at intervals
 setInterval(createPetal, 600); // Adjust interval for more or fewer petals
 
+document.addEventListener("DOMContentLoaded", function() {
+    const audio = document.getElementById("weddingSong");
+    const stopButton = document.getElementById("stopButton");
 
+    // Delay playing the audio by 5 seconds
+    setTimeout(() => {
+        audio.play();
+    }, 5000);
 
+    // Stop the audio when the stop button is clicked
+    stopButton.addEventListener("click", () => {
+        audio.pause();
+        audio.currentTime = 0; // Reset to the beginning if needed
+    });
+});
 
 </script>
 
