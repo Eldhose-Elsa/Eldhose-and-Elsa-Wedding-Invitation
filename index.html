@@ -514,13 +514,13 @@ body {
             <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Bride.jpeg" alt="Bride Image" class="img-fluid">
             <h3>Elsa</h3>
             <p>Daughter of Sabu</p> <p>and</p> <p>Late Rini Sabu</p>
-            <p>Thekkumkattil, Mudavoor</p>
+            <p>Thekkumkattil</p> <p> Mudavoor</p>
         </div>
         <div class="animate-slide">
             <img src="https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/Groom.jpeg" alt="Groom Image" class="img-fluid">
             <h3>Eldhose</h3>
             <p>Son of Joseph</p> <p>and</p> <p>Aleykutty Joseph</p>
-            <p>Kalarickal, Nellimolam</p>
+            <p>Kalarickal </p> <p> Nellimolam</p>
         </div>
     </div>
 </div>
@@ -661,14 +661,6 @@ body {
 
 	<!--Footer Section End -->
 	
-	<!-- Audio Element (Hidden) -->
-<audio id="weddingSong" src="https://drive.google.com/file/d/1vw53ZHBK1KsAHgWmPwxIoxa1jxlkOLxt/view?usp=sharing" preload="auto"></audio>
-
-<!-- Stop Button -->
-<button id="stopButton" style="position: fixed; top: 10px; right: 10px; background-color: #153f7e; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">
-    Stop Music
-</button>
-
 
     <script>
 		
@@ -793,21 +785,6 @@ function createPetal() {
 // Generate petals at intervals
 setInterval(createPetal, 600); // Adjust interval for more or fewer petals
 
-document.addEventListener("DOMContentLoaded", function() {
-    const audio = document.getElementById("weddingSong");
-    const stopButton = document.getElementById("stopButton");
-
-    // Delay playing the audio by 5 seconds
-    setTimeout(() => {
-        audio.play();
-    }, 5000);
-
-    // Stop the audio when the stop button is clicked
-    stopButton.addEventListener("click", () => {
-        audio.pause();
-        audio.currentTime = 0; // Reset to the beginning if needed
-    });
-});
 
 </script>
 
