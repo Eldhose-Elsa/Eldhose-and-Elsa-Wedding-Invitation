@@ -476,14 +476,118 @@ body {
     opacity: 0.8;
 }
 
+/* Navigation Bar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #333;
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover Effects */
+.navbar ul li a:hover {
+    color: #dc3545; /* Highlight color on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Active Link Highlight */
+.navbar ul li a.active {
+    color: #364385; /* Color for the active link */
+    font-weight: bold; /* Bold text for active link */
+}
+
+/* Add padding to the top of sections to avoid overlap with the fixed navbar */
+.section {
+    padding-top: 60px; /* Adjust for navbar height */
+    margin-top: -60px; /* Prevent extra space caused by padding */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Stack navbar items vertically on small screens */
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    /* Show a hamburger icon for mobile view */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+    
+    /* Hide the navbar links initially on mobile */
+    .navbar ul li {
+        display: none;
+    }
+    
+    /* Show navbar links when hamburger icon is clicked */
+    .navbar ul.show {
+        display: block;
+    }
+}
+
+
+<style>
+    #video-section {
+        text-align: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+    #video-section iframe {
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
 
     </style>
 </head>
 <body>
+	<!-- Navigation Bar -->
+<nav class="navbar">
+    <ul>
+        <li><a href="#intro">Home</a></li>
+        <li><a href="#invitation">Invitation</a></li>
+        <li><a href="#bride-groom">Bride & Groom</a></li>
+		<li><a href="#when-where">When & Where</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+		<li><a href="#video">Video</a></li>
+    </ul>
+</nav>
+	
 	<!-- Falling Hearts -->
     <div class="falling-hearts"></div>
     <!-- Intro Section with Carousel -->
-    <div class="section intro">
+    <div id="intro" class="section intro">
         <h1>Eldhose</h1>
         <h2>&</h2>
         <h1>Elsa</h1>
@@ -498,7 +602,7 @@ body {
 
 		<!-- Invitation Section -->
 	<div class="animate-slide">
-    <div class="section invitation">
+    <div id="invitation" class="section invitation">
         <h2>Dear Family & Friends,</h2>
         <p><b></b>We Eldhose & Elsa</b></p>
 	<p>With joyful hearts, invite you to be part of our special day.
@@ -508,7 +612,7 @@ body {
     </div>
 	</div>
 	<!-- Bride and Groom Section -->
-<div class="section bride-groom" style="background-image: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/img/Background/blue-brush-5.jpg'); background-size: cover; background-position: center;">
+<div id="bride-groom" class="section bride-groom" style="background-image: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/img/Background/blue-brush-5.jpg'); background-size: cover; background-position: center;">
     <h2>Meet the Bride & Groom</h2>
     <div class="row">
         <div class="animate-slide">
@@ -528,7 +632,7 @@ body {
 <!-- Bride and Groom Section End -->
 
 
-<div class="section gallery" style="background-image: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/img/Background/blue-brush-7.jpg'); background-size: cover; background-position: center;">
+<div id="gallery"  class="section gallery" style="background-image: url('https://raw.githubusercontent.com/Eldhose-Elsa/Eldhose-and-Elsa-Wedding-Invitation/main/img/Background/blue-brush-7.jpg'); background-size: cover; background-position: center;">
     <h2>Our Journey Together</h2>
     
     <!-- Main Display Image -->
@@ -551,6 +655,24 @@ body {
         <!-- Add more images as needed -->
     </div>
 </div>
+
+<!-- Video Section -->
+<section id="video" style="padding: 40px 0; text-align: center;">
+    <div class="container">
+        <!-- Section Title centered -->
+        <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">Watch Our Betrothal Function</h2>
+        <p style="font-size: 18px;">Enjoy watching the highlights of our betrothal ceremony held at our home.</p>
+        
+        <!-- Video Embedding -->
+        <div  class="video-container" style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mP94Egm2O7M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <!-- Fallback link to YouTube -->
+        <p style="margin-top: 10px;">If the video is unavailable, you can watch it directly on <a href="https://youtu.be/mP94Egm2O7M" target="_blank">YouTube</a>.</p>
+    </div>
+</section>
+<!-- End of Video Section -->
 
 
     <!-- Wedding Date Section with Countdown -->
@@ -610,7 +732,7 @@ body {
 
 	
 	<!--Location Start -->
-	<div class="mt-5 section-when-where">
+	<div id="when-where" class="mt-5 section-when-where">
     <div class="row g-5 justify-content-center text-center">
         <!-- When -->
         <div class="col-md-5 animate-slide">
@@ -785,6 +907,31 @@ function createPetal() {
 // Generate petals at intervals
 setInterval(createPetal, 600); // Adjust interval for more or fewer petals
 
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.navbar ul li a');
+    
+    // Get all sections
+    const sections = document.querySelectorAll('.section');
+    
+    // Function to update active link based on scroll position
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id'); // Assuming each section has an id
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
 
 </script>
 
